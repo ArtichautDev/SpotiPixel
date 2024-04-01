@@ -7,7 +7,8 @@ SpotiPixel leverages the Spotify API and Divoom's technology to convert music al
 While SpotiPixel currently supports the 64x64 resolution of Pixoo devices by default, contributions for compatibility with other resolutions are welcomed, aiming to extend support across Divoom's product range.
 
 This split architecture not only facilitates users with ARM64 devices to bypass limitations related to GIF creation (due to lack of Canvas support on these platforms) but also offers flexibility in software deployment, allowing for broader device compatibility beyond Divoom's ecosystem.
-
+![image](https://github.com/ArtichautDev/SpotiPixel/assets/91349238/6a2c8f5d-1c6c-4a70-a449-0c4489a5dda4)
+(with sliding text)
 ## Installation Guide
 
 1. **Clone the repository:** 

@@ -51,7 +51,6 @@ function fetchCurrentPlayingTrack() {
         console.log('Album cover: ', data.body.item.album.images[0].url);
         createGif(data.body.item.name, data.body.item.artists.map(artist => artist.name).join(', '), data.body.item.album.images[0].url);
       } else if (!data.body || !data.body.item) {
-        console.log('No track is currently playing.');
         currentTrackInfo = "No Track Playing";
       }
     }, function(err) {
@@ -122,7 +121,6 @@ function createGif(title, artist, coverUrl) {
 
     const buffer = encoder.out.getData();
     fs.writeFileSync(gifFilePath, buffer, 'binary');
-    console.log('GIF successfully created!');
   });
 }
 

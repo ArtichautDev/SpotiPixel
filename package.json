@@ -1,0 +1,37 @@
+{
+  "name": "spotipixel",
+  "version": "1.0.0",
+  "description": "This JavaScript project bridges the power of Spotify's API with Divoom's Pixoo to transform music album covers into captivating pixel art GIFs. Designed with a split architecture, it operates with distinct client and server sides. The server side interacts with Spotify's API to fetch album cover images based on user preferences or current playback. Once retrieved, the album covers are processed into pixel art, embracing the nostalgic aesthetic of Divoom's Pixoo displays. The client side, responsible for user interaction, allows users to select their Spotify tracks and view the pixel art transformation in real time. This integration not only celebrates music and art but also offers a unique way to visually experience your favorite albums.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArtichautDev/SpotiPixel.git"
+  },
+  "keywords": [
+    "spotify",
+    "divoom",
+    "pixoo",
+    "Pixoo64"
+  ],
+  "author": "ArtichautDev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ArtichautDev/SpotiPixel/issues"
+  },
+  "homepage": "https://github.com/ArtichautDev/SpotiPixel#readme",
+  "dependencies": {
+    "axios": "^1.6.8",
+    "canvas": "^2.11.2",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "gifencoder": "^2.0.1",
+    "node-fetch": "^3.3.2",
+    "node-gyp": "^10.1.0",
+    "passport": "^0.7.0",
+    "passport-spotify": "^2.0.0",
+    "spotify-web-api-node": "^5.0.2"
+  }
+}

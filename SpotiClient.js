@@ -26,15 +26,6 @@ async function fetchGif(url) {
     return null;
   }
 }
-async function waitIfNeeded() {
-  const now = Date.now();
-  const timeSinceLastRequest = now - lastRequestTime;
-  if (timeSinceLastRequest < 10000) {
-    const waitTime = 10000 - timeSinceLastRequest;
-    console.log(`Waiting for ${waitTime} milliseconds to avoid overloading.`);
-    return new Promise(resolve => setTimeout(resolve, waitTime));
-  }
-}
 async function playNetGif(gifUrl) {
   const songName = await fetchSongName();
   if (songName === previousSongName) {
@@ -43,7 +34,12 @@ async function playNetGif(gifUrl) {
   }
   const gifData = await fetchGif(gifUrl);
   if (!gifData) return;
-  await waitIfNeeded();
+  const now = Date.now();
+  const timeSinceLastRequest = now - lastRequestTime;
+  if (timeSinceLastRequest < 5000) {
+    const waitTime = 5000 - timeSinceLastRequest;
+    console.log(`Waiting to avoid overloading.`);
+  } else {
   try {
     const response = await axios.post(apiURL, {
       Command: "Device/PlayTFGif",
@@ -57,6 +53,7 @@ async function playNetGif(gifUrl) {
   } catch (error) {
     console.error('Error sending request to Pixoo API:', error);
   }
+}
 }
 
 function startGifCheckLoop() {

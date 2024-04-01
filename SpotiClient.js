@@ -8,7 +8,7 @@ let lastRequestTime = 0;
 
 async function fetchSongName() {
   try {
-    const response = await axios.get(checkSongUrl);
+    const response = await axios.get(checkSongUrl, { timeout: 900 });
     return response.data;
   } catch (error) {
     console.error('Error fetching song name:', error);
@@ -18,7 +18,7 @@ async function fetchSongName() {
 
 async function fetchGif(url) {
   try {
-    const response = await axios({ url, responseType: 'arraybuffer' });
+    const response = await axios({ url, responseType: 'arraybuffer', timeout: 900 });
     const gifBuffer = response.data;
     return { gifBuffer };
   } catch (error) {
@@ -29,7 +29,7 @@ async function fetchGif(url) {
 async function waitIfNeeded() {
   const now = Date.now();
   const timeSinceLastRequest = now - lastRequestTime;
-  if (timeSinceLastRequest < 10000) { // 10 secondes en millisecondes
+  if (timeSinceLastRequest < 10000) {
     const waitTime = 10000 - timeSinceLastRequest;
     console.log(`Waiting for ${waitTime} milliseconds to avoid overloading.`);
     return new Promise(resolve => setTimeout(resolve, waitTime));
@@ -49,7 +49,7 @@ async function playNetGif(gifUrl) {
       Command: "Device/PlayTFGif",
       FileType: 2,
       FileName: gifUrl,
-    });
+    }, { timeout: 900 });
     
     console.log(response.data);
     previousSongName = songName;
